@@ -322,12 +322,16 @@ def main():
     st.markdown("### Real-time Health Risk Assessment")
 
     # Initialize monitor (Note: You'll need to implement the PatientHealthMonitor class)
-    
+    # DBNAME = st.secrets["postgres"]["DBNAME"]
+    # DBUSER = st.secrets["postgres"]["DBUSER"]
+    # DBPASSWORD = st.secrets["postgres"]["DBPASSWORD"]
+    # DBHOST = st.secrets["postgres"]["DBHOST"]
+    # DBPORT = st.secrets["postgres"]["DBPORT"]
     monitor = PatientHealthMonitor(
-        dbname=os.getenv("DB_NAME"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        host=os.getenv("DB_HOST"),
+        dbname=st.secrets["postgres"]["DBNAME"],
+        user=st.secrets["postgres"]["DBUSER"],
+        password=st.secrets["postgres"]["DBPASSWORD"],
+        host=st.secrets["postgres"]["DBHOST"],
     )
 
     if not monitor.connect_to_database():
