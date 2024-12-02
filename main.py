@@ -4,6 +4,15 @@ import plotly.express as px
 import psycopg2
 from datetime import datetime
 
+# Access secrets securely from Streamlit's secret management system
+DBNAME = st.secrets["postgres"]["DBNAME"]
+DBUSER = st.secrets["postgres"]["DBUSER"]
+DBPASSWORD = st.secrets["postgres"]["DBPASSWORD"]
+DBHOST = st.secrets["postgres"]["DBHOST"]
+DBPORT = st.secrets["postgres"]["DBPORT"]
+
+
+
 class PatientHealthMonitor:
     def __init__(self, dbname, user, password, host, port):
         """Initialize database connection parameters"""
@@ -317,11 +326,11 @@ def main():
 
     # Initialize monitor (Note: You'll need to implement the PatientHealthMonitor class)
     monitor = PatientHealthMonitor(
-        dbname="HealthcareDB",
-        user="postgres",
-        password="root",
-        host="localhost",
-        port="5432"
+        dbname=DBNAME,
+        user=DBUSER,
+        password=DBPASSWORD,
+        host=DBHOST,
+        port=DBPORT
     )
 
     if not monitor.connect_to_database():
