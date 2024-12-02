@@ -12,14 +12,13 @@ load_dotenv()
 
 
 class PatientHealthMonitor:
-    def __init__(self, dbname, user, password, host, port):
+    def __init__(self, dbname, user, password, host):
         """Initialize database connection parameters"""
         self.db_params = {
             'dbname': dbname,
             'user': user,
             'password': password,
-            'host': host,
-            'port': port
+            'host': host
         }
         self.conn = None
         self.cursor = None
