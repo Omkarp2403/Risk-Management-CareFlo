@@ -3,6 +3,13 @@ import pandas as pd
 import plotly.express as px
 import psycopg2
 from datetime import datetime
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
+
 
 class PatientHealthMonitor:
     def __init__(self, dbname, user, password, host, port):
@@ -316,12 +323,12 @@ def main():
     st.markdown("### Real-time Health Risk Assessment")
 
     # Initialize monitor (Note: You'll need to implement the PatientHealthMonitor class)
+    
     monitor = PatientHealthMonitor(
-        dbname="HealthcareDB",
-        user="postgres",
-        password="root",
-        host="localhost",
-        port="5432"
+        dbname=os.getenv("DB_NAME"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        host=os.getenv("DB_HOST"),
     )
 
     if not monitor.connect_to_database():
